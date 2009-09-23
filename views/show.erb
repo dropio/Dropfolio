@@ -1,0 +1,10 @@
+<%= @upload_embed %>
+
+<script type="text/javascript" charset="utf-8">
+DropioFlashConfig = {
+        uploadEmbed:{
+          onUploadCompleteCallback:function(){alert("I uploaded!");},
+          onFilesAddedCallback:function(uploadAllowed){alert("You added files!  Do they fit: " + uploadAllowed);}
+        }
+      }
+</script>
