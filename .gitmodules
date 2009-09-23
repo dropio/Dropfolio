@@ -1,0 +1,3 @@
+[submodule "dropio"]
+	path = dropio
+	url = git://github.com/dropio/dropio.git
