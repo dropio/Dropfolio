@@ -32,7 +32,7 @@ get '/:dropname/admin' do
   @drop = Dropio::Drop.find(params[:dropname], generate_password(params[:dropname]))
 end
 
-get '/:dropname/' do
+get '/:dropname' do
   @drop = Dropio::Drop.find(params[:dropname])
   @upload_embed = @drop.upload_code
   @assets = @drop.assets
