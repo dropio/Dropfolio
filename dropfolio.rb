@@ -3,7 +3,7 @@ $LOAD_PATH.unshift File.dirname(__FILE__) + "/dropio/lib"
 require 'rubygems'
 require 'sinatra'
 require 'erb'
-require 'dropio'
+require 'dropio/lib/dropio'
 require 'digest/sha1'
 
 # INITIALIZE THE APP
