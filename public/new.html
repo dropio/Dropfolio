@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head>
+
+  
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-type">
+    <title>drop.io developer API Admin Panel - it's like a GUI for sudo, written in Visual Basic</title>
+    <link href="new_files/main.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="new_files/chronicle.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="new_files/prototype.js" type="text/javascript"></script>
+    <script src="new_files/string.js" type="text/javascript"></script>
+    <script src="new_files/effects.js" type="text/javascript"></script>
+    <script src="new_files/tabcontrol.js" type="text/javascript"></script>
+    <script src="new_files/ruledtable.js" type="text/javascript"></script>
+    <script src="new_files/admin.js" type="text/javascript"></script>
+    <script src="new_files/HelpBalloon.js" type="text/javascript"></script>
+    <script src="new_files/chronicle.js" type="text/javascript"></script>
+    <!--[if lt IE 7]> 
+      <script src='/javascripts/pngfix.js' type='text/javascript'></script>
+    <![endif]-->
+  </head><body id="">
+    <div id="page">
+      <div id="header">
+        <div id="site-title"><a href="http://dev.drop.io/admin">drop.io developer API Admin Panel</a></div>
+        <div id="site-subtitle">it's like a GUI for sudo, written in Visual Basic</div>
+        <div id="navigation"><a href="http://dev.drop.io/admin/pages">Pages</a> <span class="separator"> | </span> <strong><a href="http://dev.drop.io/admin/snippets">Snippets</a></strong> <span class="separator"> | </span> <a href="http://dev.drop.io/admin/assets">Assets</a> <span class="separator"> | </span> <a href="http://dev.drop.io/admin/layouts">Layouts</a> <span class="separator"> | </span> <a href="http://dev.drop.io/admin/settings">Settings</a> <span class="separator"> | </span> <a href="http://dev.drop.io/admin/versions/">History</a></div>
+      </div>
+      <hr class="hidden">
+      <div id="main">
+        <div id="content">
+          <div id="timeline">
+            <ol>
+              <li id="working-version"><img class="timeline-icon" id="working-version-icon" src="new_files/working.png"><img alt="This" class="marker" id="this-marker" src="new_files/this.png"></li><script type="text/javascript">
+              //<![CDATA[
+                    new HelpBalloon({
+                      content: "You are currently editing this version.",
+                      icon: $('working-version-icon'),
+                      balloonPrefix: '/images/admin/balloon-',
+                      button: '/images/admin/button.png',
+                      contentMargin: 40,
+                      showEffect: Effect.Appear,
+                      hideEffect: Effect.Fade,
+                      autoHideTimeout: 2000
+                    });
+              
+              //]]>
+              </script>
+            </ol>
+          </div>
+          <h1>New Snippet</h1>
+          <form action="/admin/snippets" class="new_snippet" id="new_snippet" method="post"><div style="margin: 0pt; padding: 0pt; display: inline;"><input name="authenticity_token" value="y5i/2HyZfXpbArlG4/IugfWEfTk+hOs1wHvgF4464PE=" type="hidden"></div>
+            <input id="snippet_lock_version" name="snippet[lock_version]" value="0" type="hidden">
+            
+            <div class="form-area">
+          <p class="title">
+            <label for="snippet_name">Name</label>
+            <input class="textbox" id="snippet_name" maxlength="100" name="snippet[name]" size="100" value="next" type="text">
+          </p>
+          <p class="content">
+            <label for="snippet_content">Body</label>
+            <textarea class="textarea" cols="40" id="snippet_content" name="snippet[content]" rows="20" style="width: 100%;">&lt;r:siblings&gt;
+  &lt;r:next&gt;Next: &lt;r:link/&gt;&lt;/r:next&gt;
+&lt;/r:siblings&gt;
+</textarea>
+          </p>
+          <p>
+            <label for="snippet_filter_id">Filter</label>
+            <select id="snippet_filter_id" name="snippet[filter_id]"><option selected="selected" value="">none</option>
+            <option value="Markdown">Markdown</option>
+            <option value="SmartyPants">SmartyPants</option>
+            <option value="Textile">Textile</option></select>
+          </p>
+          <p>
+            <label for="snippet_status_id">Status</label>
+            <select id="snippet_status_id" name="snippet[status_id]"><option value="1">Draft</option>
+            <option value="50">Reviewed</option>
+            <option value="100" selected="selected">Published</option>
+            <option value="101">Hidden</option></select>
+          </p>
+          <p class="clear">&nbsp;</p>
+            </div>
+            <script type="text/javascript">
+            //<![CDATA[
+            $('snippet_name').activate()
+            //]]>
+            </script>
+          <p class="buttons">
+            <input class="button" name="commit" value="Create Snippet" type="submit">
+            <input class="button" name="continue" value="Save and Continue Editing" type="submit">
+            or
+            <a href="http://dev.drop.io/admin/snippets">Cancel</a>
+          </p>
+          </form>
+        </div>
+      </div>
+      <hr class="hidden">
+      <div id="footer">
+        <p>
+          This site was made with Ruby and is powered by
+          <a href="http://radiantcms.org/">Radiant CMS</a>
+          version
+          0.8.1.
+        </p>
+        <p id="site-links">
+          <a href="http://dev.drop.io/admin/users">Users</a>
+          <span class="separator"> |</span>
+          <a href="http://dev.drop.io/admin/extensions">Extensions</a>
+          <span class="separator"> |</span>
+          <a href="http://dev.drop.io/admin/logout">Log Out</a>
+          <span class="separator"> |</span>
+          <a href="http://dev.drop.io/"><img alt="View Site" src="new_files/view-site.gif" title=""></a>
+        </p>
+      </div>
+      <div id="popups">
+        <div class="popup" id="version-diff-popup" style="display: none;">
+          <h3>
+            Version
+            <span id="version-number"></span>
+          </h3>
+          <div id="version-diff">Version diff goes here</div>
+          <p>
+            <a href="#" class="close">Close</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body></html>

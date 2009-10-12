@@ -1,9 +1,7 @@
-$LOAD_PATH.unshift File.dirname(__FILE__) + "/dropio/lib"
-
 require 'rubygems'
 require 'sinatra'
 require 'erb'
-require 'dropio/lib/dropio'
+require 'dropio'
 require 'digest/sha1'
 
 # INITIALIZE THE APP
@@ -16,20 +14,16 @@ end
 # URL ACTIONS
 
 get '/' do
-  erb :new
+  erb :new, :layout => :application
 end
 
 post '/' do
-  @drop = Dropio::Drop.create()
+  @drop = Dropio::Drop.create(:description => params[:description])
   
   @drop.admin_password = generate_password(@drop.name)
   @drop.save
   
   redirect "/#{@drop.name}", 303
-end
-
-get '/:dropname/admin' do
-  @drop = Dropio::Drop.find(params[:dropname], generate_password(params[:dropname]))
 end
 
 get '/:dropname' do
@@ -51,7 +45,12 @@ helpers do
     Digest::SHA1.hexdigest(dropname + SALT)[0...5]
   end
   
-  def show_asset(asset)
-    asset.thumbnail
+  def display_asset(asset)
+    case asset.type
+      when "image"
+        "<img src='#{asset.converted || '/converting.png'}'/>"
+      else
+        asset.embed_code
+    end
   end
 end

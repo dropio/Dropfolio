@@ -1,0 +1,46 @@
+body {
+  background-color: #000;
+  color: #FFFFFF;
+  font-size:30px;
+}
+
+.item {
+  display:block;
+  width:800px;
+  height:500px;
+  position: absolute;
+  left:50%;
+  top:50%;
+  margin-top:-250px;
+  margin-left:-400px;
+  text-align:center;
+}
+
+.item > * {
+  background-color:#FFFFFF;
+  padding:5px;
+  margin:auto;
+}
+
+form > * {
+  display:block;
+  float:left;
+  clear:left;
+}
+
+form textarea {
+  width:500px;
+  height:200px;
+}
+
+form input,
+form textarea {
+  font-size:25px;
+}
+
+#next {
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  font-size:150px;
+}

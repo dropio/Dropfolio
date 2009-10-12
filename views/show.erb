@@ -1,6 +1,37 @@
-<%# @upload_embed %>
-    <div style="width: 330px;"><div><object width="330" height="155">
-      <param name="movie" value="http://drop.io/72c7f116a41dbe3c59c7d35a46f516678279e0aa/01521420-8b49-012c-4c44-fa8d8b4a1f38/uploader.swf" />
-      <param name="wmode" value="transparent" />
-      <param name="allowScriptAccess" value="always" />
-       <embed src="http://drop.io/72c7f116a41dbe3c59c7d35a46f516678279e0aa/01521420-8b49-012c-4c44-fa8d8b4a1f38/uploader.swf" type="application/x-shockwave-flash" wmode="transparent" width="330" height="155" allowScriptAccess="always"></embed></object></div><div style="text-align: center; color: #595653; font-size: 11px; font-family: Verdana, sans-serif; padding-top: 10px; padding-right: 5px;"><a href="http://drop.io">drop.io</a>: simple private sharing</div></div>
+<script>
+  $(function(){
+    items = $('.item');
+    if(items) {
+      currentItemIndex = 0;
+      items.eq(currentItemIndex).fadeIn();
+      
+      $('#next').click(function(){
+        items.eq(currentItemIndex).fadeOut();
+        
+        currentItemIndex++;
+        if (items.length == currentItemIndex)
+          currentItemIndex = 0;
+        
+        items.eq(currentItemIndex).fadeIn();
+      });
+    }
+  });
+</script>
+
+<div id='description'><%= @drop.description %></div>
+
+<ul id='items'>
+  <% @assets.each do |asset| %>
+    <li class="item" style="display:none;"><%= display_asset(asset) %></li>
+  <% end %>
+</ul>
+
+<% if @assets.length > 1 %>
+  <a id="next" href="#">next</a>
+<% end %>
+
+<a href="#" onclick="$('#upload').toggle();return false;">Add Files</a>
+
+<div id="upload" style="display:none;">
+  <%= @upload_embed %>
+</div>
