@@ -7,7 +7,7 @@ require 'digest/sha1'
 # INITIALIZE THE APP
 
 configure do
-  Dropio::Config.api_key = "8092bd8653834c2d052d31fbc617448c87343052"
+  Dropio::Config.api_key = "ENTER_YOUR_DROPIO_API_KEY_HERE" # go to http://api.drop.io to get a free developer key
   SALT = "___changemetosomethingrandom___"
 end
 
