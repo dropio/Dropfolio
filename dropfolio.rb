@@ -33,11 +33,6 @@ get '/:dropname' do
   erb :show, :layout => :application
 end
 
-get '/:dropname/items/:asset_number' do
-  @drop = Dropio::Drop.find(params[:dropname])
-  @drop.assets[params[:asset_number].to_i].embed_code
-end
-
 # HELPER FUNCTIONS
 
 helpers do
