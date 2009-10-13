@@ -1,7 +1,17 @@
 body {
   background-color: #000;
-  color: #FFFFFF;
+  color: #F7F7F7;
   font-size:30px;
+}
+
+a {
+  color:#FFFFFF;
+  text-decoration:none;
+  border-bottom:2px solid #FFFFFF;
+}
+
+a:hover {
+  border-bottom:2px dotted #FFFFFF;
 }
 
 .item {
@@ -50,4 +60,8 @@ form textarea {
 #adminPanel {
   font-size:16px;
   width:300px;
+}
+
+#adminPanel form input {
+  font-size:12px;
 }
