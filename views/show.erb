@@ -13,6 +13,7 @@
           currentItemIndex = 0;
         
         items.eq(currentItemIndex).fadeIn();
+        return false;
       });
     }
   });
@@ -33,6 +34,9 @@
 <% if is_admin? %>
   <div id="adminPanel">
     <a href="#" onclick="$('#upload').toggle();return false;">Add Files</a>
+    <div id="upload" style="display:none;">
+      <%= @upload_embed %>
+    </div>
     <p>
       <% if @assets.length > 0 %>
         To show people this portfolio, send them to <a href="/<%= @drop.name %>">http://dropfolio.heroku.com/<%= @drop.name %></a>
@@ -40,9 +44,9 @@
         Add some files to this portfolio to get started.
       <% end %>
     </p>
-  </div>
-  
-  <div id="upload" style="display:none;">
-    <%= @upload_embed %>
+    <form action='' method='post' confirm="are your sure?">
+      <input type='hidden' name='_method' value='DELETE'>
+      <input type='submit' value='Destroy this portfolio.'/>
+    </form>
   </div>
 <% end %>

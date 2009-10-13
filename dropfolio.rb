@@ -29,10 +29,19 @@ end
 get '/:dropname' do
   @drop = Dropio::Drop.find(params[:dropname])
   @assets = @drop.assets
+  
   if is_admin?
     @upload_embed = @drop.upload_code
   end
+  
   erb :show, :layout => :application
+end
+
+delete '/:dropname' do
+  @drop = Dropio::Drop.find(params[:dropname],generate_password(params[:dropname]))
+  @drop.destroy!
+
+  redirect "/"
 end
 
 # HELPER FUNCTIONS
