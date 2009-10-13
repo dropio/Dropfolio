@@ -30,8 +30,19 @@
   <a id="next" href="#">next</a>
 <% end %>
 
-<a href="#" onclick="$('#upload').toggle();return false;">Add Files</a>
-
-<div id="upload" style="display:none;">
-  <%= @upload_embed %>
-</div>
+<% if is_admin? %>
+  <div id="adminPanel">
+    <a href="#" onclick="$('#upload').toggle();return false;">Add Files</a>
+    <p>
+      <% if @assets.length > 0 %>
+        To show people this portfolio, send them to <a href="/<%= @drop.name %>">http://dropfolio.heroku.com/<%= @drop.name %></a>
+      <% else %>
+        Add some files to this portfolio to get started.
+      <% end %>
+    </p>
+  </div>
+  
+  <div id="upload" style="display:none;">
+    <%= @upload_embed %>
+  </div>
+<% end %>

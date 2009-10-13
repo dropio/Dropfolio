@@ -23,19 +23,26 @@ post '/' do
   @drop.admin_password = generate_password(@drop.name)
   @drop.save
   
-  redirect "/#{@drop.name}", 303
+  redirect "/#{@drop.name}?admin=true", 303
 end
 
 get '/:dropname' do
   @drop = Dropio::Drop.find(params[:dropname])
-  @upload_embed = @drop.upload_code
   @assets = @drop.assets
+  if is_admin?
+    @upload_embed = @drop.upload_code
+  end
   erb :show, :layout => :application
 end
 
 # HELPER FUNCTIONS
 
 helpers do
+  
+  def is_admin?
+    @is_admin ||= (params[:admin] == 'true')
+  end
+  
   def generate_password(dropname)
     Digest::SHA1.hexdigest(dropname + SALT)[0...5]
   end
@@ -48,4 +55,5 @@ helpers do
         asset.embed_code
     end
   end
+  
 end
